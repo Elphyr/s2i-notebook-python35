@@ -13,6 +13,13 @@ RUN apt-get update && apt-get install -y libfreetype6 libfreetype6-dev \
     apt-get clean && \
     rm -r /var/lib/apt/lists/*
 
+RUN pip uninstall fbprophet pystan && \
+    pip --no-cache-dir install pystan==2.17 && \
+    pip --no-cache-dir install fbprophet==0.2 && \
+    conda install Cython --force && \
+    conda install pystan -c conda-forge && \
+    conda install -c conda-forge fbprophet
+
 # Copy in S2I scripts and override S2I labels to flag this as now being
 # builder for Jupyter notebooks.
 
