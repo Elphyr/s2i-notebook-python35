@@ -13,10 +13,6 @@ RUN apt-get update && apt-get install -y libfreetype6 libfreetype6-dev \
     apt-get clean && \
     rm -r /var/lib/apt/lists/*
 
-RUN pip install --upgrade pip && \
-    pip --no-cache-dir install --user pystan==2.17 && \
-    pip --no-cache-dir install --user fbprophet==0.5
-
 # Copy in S2I scripts and override S2I labels to flag this as now being
 # builder for Jupyter notebooks.
 
@@ -38,6 +34,10 @@ LABEL io.k8s.description="S2I builder for Jupyter Notebooks (Python 3.5)." \
 USER 1001
 
 # Install packages required for Jupyter notebook and ipyparallel.
+
+RUN pip install --upgrade pip && \
+    pip install pystan==2.17 && \
+    pip install fbprophet==0.5
 
 RUN warpdrive build && \
     rm ${WARPDRIVE_SRC_ROOT}/requirements.txt && \
