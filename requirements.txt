@@ -1,0 +1,4 @@
+jupyter
+jupyterhub<0.8.0
+ipython[notebook]<6.0.0
+ipyparallel
