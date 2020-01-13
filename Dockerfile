@@ -15,10 +15,7 @@ RUN apt-get update && apt-get install -y libfreetype6 libfreetype6-dev \
 
 RUN pip install --upgrade pip && \
     pip --no-cache-dir install pystan==2.17 && \
-    pip --no-cache-dir install fbprophet==0.2 && \
-    conda install Cython --force && \
-    conda install pystan -c conda-forge && \
-    conda install -c conda-forge fbprophet
+    pip --no-cache-dir install fbprophet==0.5
 
 # Copy in S2I scripts and override S2I labels to flag this as now being
 # builder for Jupyter notebooks.
