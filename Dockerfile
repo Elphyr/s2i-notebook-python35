@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y libfreetype6 libfreetype6-dev \
     apt-get clean && \
     rm -r /var/lib/apt/lists/*
 
-RUN pip uninstall fbprophet pystan && \
+RUN pip install --upgrade pip && \
     pip --no-cache-dir install pystan==2.17 && \
     pip --no-cache-dir install fbprophet==0.2 && \
     conda install Cython --force && \
